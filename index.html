@@ -78,8 +78,6 @@
         .btn-red:hover { box-shadow: 0 0 30px #ff00ff; }
         .btn-green { background: #00ffff; box-shadow: 0 0 15px #00ffff; }
         .btn-green:hover { box-shadow: 0 0 30px #00ffff; }
-        .btn-purple { background: #8a2be2; box-shadow: 0 0 15px #8a2be2; color: #fff; }
-        .btn-purple:hover { box-shadow: 0 0 30px #8a2be2; }
 
         /* ХОСТИНГ */
         .hosting-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 20px; }
@@ -93,8 +91,12 @@
         .hosting-card .price span { font-size: 16px; color: #888; }
         .hosting-card ul { list-style: none; text-align: left; margin-bottom: 25px; color: #ccc; font-size: 14px; line-height: 2; }
         .hosting-card ul li::before { content: '⚡'; color: #ff00ff; margin-right: 8px; }
-        .btn-hosting { display: block; width: 100%; padding: 15px; background: transparent; border: 2px solid #00ffff; color: #00ffff; font-weight: bold; border-radius: 10px; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
+        .btn-hosting { display: block; width: 100%; padding: 15px; background: transparent; border: 2px solid #00ffff; color: #00ffff; font-weight: bold; border-radius: 10px; cursor: pointer; transition: 0.3s; text-transform: uppercase; margin-bottom: 15px; }
         .btn-hosting:hover { background: #00ffff; color: #000; box-shadow: 0 0 20px #00ffff; }
+
+        /* ССЫЛКА НА ХОСТИНГ */
+        .link-hosting { display: inline-block; color: #888; text-decoration: underline; font-size: 12px; transition: 0.3s; }
+        .link-hosting:hover { color: #00ffff; text-shadow: 0 0 5px #00ffff; }
 
         /* ЛАУНЧЕР */
         .launcher-box { text-align: center; background: rgba(10, 5, 20, 0.8); padding: 60px; border-radius: 30px; border: 1px solid rgba(255, 0, 255, 0.3); box-shadow: 0 0 30px rgba(255, 0, 255, 0.2); }
@@ -104,8 +106,11 @@
         .download-btn:hover { transform: translateY(-5px); box-shadow: 0 0 40px #ff00ff; }
 
         /* КАРТА */
-        .map-container { background: #000; border-radius: 24px; overflow: hidden; border: 2px solid #00ffff; height: 600px; box-shadow: 0 0 25px rgba(0, 255, 255, 0.3); }
+        .map-container { background: #000; border-radius: 24px; overflow: hidden; border: 2px solid #00ffff; height: 600px; box-shadow: 0 0 25px rgba(0, 255, 255, 0.3); margin-bottom: 15px; }
         .map-container iframe { width: 100%; height: 100%; border: none; }
+        .map-link { display: block; text-align: center; margin-top: 10px; }
+        .map-link a { color: #00ffff; text-decoration: none; font-weight: bold; font-size: 16px; transition: 0.3s; }
+        .map-link a:hover { text-shadow: 0 0 10px #00ffff; color: #fff; }
 
         /* ПЛАГИНЫ */
         .plugins-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
@@ -117,11 +122,15 @@
 
         /* ДОКУМЕНТЫ */
         .docs-grid { display: flex; flex-direction: column; gap: 20px; align-items: center; }
-        .doc-card { background: rgba(10, 5, 20, 0.9); padding: 30px; border-radius: 20px; border: 1px solid rgba(0, 255, 255, 0.2); width: 100%; max-width: 800px; transition: 0.3s; }
-        .doc-card:hover { border-color: #ff00ff; box-shadow: 0 0 20px rgba(255, 0, 255, 0.2); }
+        .doc-card { background: rgba(10, 5, 20, 0.9); padding: 30px; border-radius: 20px; border: 1px solid rgba(0, 255, 255, 0.2); width: 100%; max-width: 800px; }
         .doc-card h3 { color: #ff00ff; margin-bottom: 15px; font-size: 22px; text-shadow: 0 0 10px #ff00ff; }
         .doc-card p { color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 10px; }
         .doc-card a { color: #00ffff; text-decoration: none; font-weight: bold; }
+
+        /* БЕТА-ТЕСТ */
+        .beta-box { text-align: center; background: rgba(10, 5, 20, 0.8); padding: 80px 40px; border-radius: 30px; border: 2px dashed #00ffff; box-shadow: 0 0 40px rgba(0, 255, 255, 0.2); }
+        .beta-box h2 { color: #ff00ff; font-size: 48px; margin-bottom: 20px; font-weight: 900; text-shadow: 0 0 20px #ff00ff; }
+        .beta-box p { color: #ccc; font-size: 20px; line-height: 1.6; }
 
         /* ПОДВАЛ */
         footer { text-align: center; padding: 30px; color: #555; font-size: 14px; border-top: 1px solid rgba(0, 255, 255, 0.1); background: rgba(5, 1, 10, 0.9); position: relative; z-index: 10; }
@@ -158,6 +167,7 @@
             <button onclick="openTab('plugins', this)">Плагины</button>
             <button onclick="openTab('map', this)">Карта мира</button>
             <button onclick="openTab('hosting', this)">Хостинг</button>
+            <button onclick="openTab('launcher', this)">Лаунчер</button>
             <button onclick="openTab('docs', this)">Документы</button>
         </nav>
     </header>
@@ -211,6 +221,10 @@
             <div class="map-container">
                 <iframe src="http://95.216.30.30:25680" title="Карта мира"></iframe>
             </div>
+            <!-- Кнопка перехода по ссылке, если iframe не грузится -->
+            <div class="map-link">
+                <a href="http://95.216.30.30:25680" target="_blank">🔗 Открыть карту в новой вкладке</a>
+            </div>
         </div>
 
         <!-- Хостинг -->
@@ -228,6 +242,7 @@
                         <li>1 Ядро CPU</li>
                     </ul>
                     <button class="btn-hosting" onclick="openTab('beta', document.querySelectorAll('nav button')[5])">Купить</button>
+                    <a href="http://213.21.251.36:8081" target="_blank" class="link-hosting">🔗 Открыть магазин в новой вкладке</a>
                 </div>
                 <div class="hosting-card">
                     <h3>Java Про</h3>
@@ -238,6 +253,7 @@
                         <li>2 Ядра CPU</li>
                     </ul>
                     <button class="btn-hosting" onclick="openTab('beta', document.querySelectorAll('nav button')[5])">Купить</button>
+                    <a href="http://213.21.251.36:8081" target="_blank" class="link-hosting">🔗 Открыть магазин в новой вкладке</a>
                 </div>
                 <div class="hosting-card">
                     <h3>Java Макс</h3>
@@ -248,7 +264,17 @@
                         <li>2 Ядра CPU</li>
                     </ul>
                     <button class="btn-hosting" onclick="openTab('beta', document.querySelectorAll('nav button')[5])">Купить</button>
+                    <a href="http://213.21.251.36:8081" target="_blank" class="link-hosting">🔗 Открыть магазин в новой вкладке</a>
                 </div>
+            </div>
+        </div>
+
+        <!-- Лаунчер -->
+        <div id="launcher" class="tab">
+            <div class="launcher-box">
+                <h2>WitherMine Launcher</h2>
+                <p>Наш фирменный клиент с поддержкой Forge и Fabric, кастомизацией и мгновенным запуском.</p>
+                <a href="https://disk.yandex.ru/d/czUsOb2UsV2iXw" class="download-btn" target="_blank">⬇ Скачать лаунчер</a>
             </div>
         </div>
 
@@ -296,7 +322,7 @@
 
     <footer>
         <div class="footer-links">
-            <a href="#" onclick="openTab('docs', document.querySelectorAll('nav button')[4])">Документы</a> | 
+            <a href="#" onclick="openTab('docs', document.querySelectorAll('nav button')[5])">Документы</a> | 
             <a href="#" onclick="openTab('beta', document.querySelectorAll('nav button')[5])">Оплата</a> | 
             <a href="https://t.me/WitherMine_Official" target="_blank">Техподдержка</a>
         </div>
