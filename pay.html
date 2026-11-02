@@ -34,7 +34,7 @@
             color: #fff; font-size: 28px; font-weight: 900; letter-spacing: 2px;
             text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
         }
-        nav { display: flex; gap: 20px; flex-wrap: wrap; }
+        nav { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; }
         nav button {
             background: none; border: none; color: #888; font-size: 14px; cursor: pointer;
             transition: all 0.3s ease; font-weight: 700; padding-bottom: 5px; border-bottom: 2px solid transparent;
@@ -42,6 +42,12 @@
         }
         nav button:hover { color: #00ffff; text-shadow: 0 0 8px #00ffff; }
         nav button.active { color: #ff00ff; border-bottom: 2px solid #ff00ff; text-shadow: 0 0 10px #ff00ff; }
+        .btn-nav-panel { 
+            color: #000; background: #00ffff; border: none; padding: 10px 20px; border-radius: 8px; 
+            font-weight: 900; cursor: pointer; text-transform: uppercase; text-decoration: none; font-size: 13px;
+            box-shadow: 0 0 15px #00ffff; transition: 0.3s;
+        }
+        .btn-nav-panel:hover { background: #ff00ff; box-shadow: 0 0 25px #ff00ff; }
 
         .content { flex: 1; padding: 50px 20px; display: flex; justify-content: center; position: relative; z-index: 10; }
         .tab { display: none; width: 100%; max-width: 1100px; animation: slideUp 0.5s ease-out; }
@@ -79,7 +85,7 @@
         .btn-green { background: #00ffff; box-shadow: 0 0 15px #00ffff; }
         .btn-green:hover { box-shadow: 0 0 30px #00ffff; }
 
-        /* ХОСТИНГ */
+        /* ХОСТИНГ (ВИТРИНА) */
         .hosting-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 20px; }
         .hosting-card {
             background: rgba(10, 5, 20, 0.8); padding: 30px; border-radius: 20px;
@@ -91,12 +97,8 @@
         .hosting-card .price span { font-size: 16px; color: #888; }
         .hosting-card ul { list-style: none; text-align: left; margin-bottom: 25px; color: #ccc; font-size: 14px; line-height: 2; }
         .hosting-card ul li::before { content: '⚡'; color: #ff00ff; margin-right: 8px; }
-        .btn-hosting { display: block; width: 100%; padding: 15px; background: transparent; border: 2px solid #00ffff; color: #00ffff; font-weight: bold; border-radius: 10px; cursor: pointer; transition: 0.3s; text-transform: uppercase; margin-bottom: 15px; }
+        .btn-hosting { display: block; width: 100%; padding: 15px; background: transparent; border: 2px solid #00ffff; color: #00ffff; font-weight: bold; border-radius: 10px; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
         .btn-hosting:hover { background: #00ffff; color: #000; box-shadow: 0 0 20px #00ffff; }
-
-        /* ССЫЛКА НА ХОСТИНГ */
-        .link-hosting { display: inline-block; color: #888; text-decoration: underline; font-size: 12px; transition: 0.3s; }
-        .link-hosting:hover { color: #00ffff; text-shadow: 0 0 5px #00ffff; }
 
         /* ЛАУНЧЕР */
         .launcher-box { text-align: center; background: rgba(10, 5, 20, 0.8); padding: 60px; border-radius: 30px; border: 1px solid rgba(255, 0, 255, 0.3); box-shadow: 0 0 30px rgba(255, 0, 255, 0.2); }
@@ -128,11 +130,6 @@
         .doc-card h3 { color: #ff00ff; margin-bottom: 15px; font-size: 24px; text-shadow: 0 0 10px #ff00ff; }
         .doc-card p { color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 10px; }
         .doc-card a { color: #00ffff; text-decoration: none; font-weight: bold; }
-
-        /* БЕТА-ТЕСТ */
-        .beta-box { text-align: center; background: rgba(10, 5, 20, 0.8); padding: 80px 40px; border-radius: 30px; border: 2px dashed #00ffff; box-shadow: 0 0 40px rgba(0, 255, 255, 0.2); }
-        .beta-box h2 { color: #ff00ff; font-size: 48px; margin-bottom: 20px; font-weight: 900; text-shadow: 0 0 20px #ff00ff; }
-        .beta-box p { color: #ccc; font-size: 20px; line-height: 1.6; }
 
         /* ПОДВАЛ */
         footer { text-align: center; padding: 30px; color: #555; font-size: 14px; border-top: 1px solid rgba(0, 255, 255, 0.1); background: rgba(5, 1, 10, 0.9); position: relative; z-index: 10; }
@@ -171,6 +168,8 @@
             <button onclick="openTab('hosting', this)">Хостинг</button>
             <button onclick="openTab('launcher', this)">Лаунчер</button>
             <button onclick="openTab('docs', this)">Документы</button>
+            <!-- Кнопка панели управления прямо в шапке -->
+            <a href="http://213.21.251.36" target="_blank" class="btn-nav-panel">Панель управления</a>
         </nav>
     </header>
 
@@ -205,6 +204,58 @@
             </div>
         </div>
 
+        <!-- Хостинг -->
+        <div id="hosting" class="tab">
+            <h2 style="text-align: center; margin-bottom: 10px; color: #ff00ff; font-size: 42px; text-shadow: 0 0 20px #ff00ff;">WitherMine Hosting</h2>
+            <p style="text-align: center; color: #888; margin-bottom: 40px;">Выберите тариф. После покупки зайдите в Панель управления.</p>
+            
+            <div class="hosting-grid">
+                <!-- Bedrock -->
+                <div class="hosting-card">
+                    <h3>Bedrock Старт</h3>
+                    <div class="price">75 <span>₽/мес</span></div>
+                    <ul><li>1 ГБ RAM</li><li>1 Ядро CPU</li></ul>
+                    <button class="btn-hosting" onclick="window.open('http://213.21.251.36:8081', '_blank')">Купить</button>
+                </div>
+                <div class="hosting-card">
+                    <h3>Bedrock Про</h3>
+                    <div class="price">150 <span>₽/мес</span></div>
+                    <ul><li>2 ГБ RAM</li><li>2 Ядра CPU</li></ul>
+                    <button class="btn-hosting" onclick="window.open('http://213.21.251.36:8081', '_blank')">Купить</button>
+                </div>
+                <div class="hosting-card">
+                    <h3>Bedrock Макс</h3>
+                    <div class="price">225 <span>₽/мес</span></div>
+                    <ul><li>4 ГБ RAM</li><li>2 Ядра CPU</li></ul>
+                    <button class="btn-hosting" onclick="window.open('http://213.21.251.36:8081', '_blank')">Купить</button>
+                </div>
+
+                <!-- Java -->
+                <div class="hosting-card">
+                    <h3>Java Старт</h3>
+                    <div class="price">75 <span>₽/мес</span></div>
+                    <ul><li>1 ГБ RAM</li><li>1 Ядро CPU</li></ul>
+                    <button class="btn-hosting" onclick="window.open('http://213.21.251.36:8081', '_blank')">Купить</button>
+                </div>
+                <div class="hosting-card">
+                    <h3>Java Про</h3>
+                    <div class="price">200 <span>₽/мес</span></div>
+                    <ul><li>2 ГБ RAM</li><li>2 Ядра CPU</li></ul>
+                    <button class="btn-hosting" onclick="window.open('http://213.21.251.36:8081', '_blank')">Купить</button>
+                </div>
+                <div class="hosting-card">
+                    <h3>Java Фордж</h3>
+                    <div class="price">275 <span>₽/мес</span></div>
+                    <ul><li>4 ГБ RAM</li><li>2 Ядра CPU</li></ul>
+                    <button class="btn-hosting" onclick="window.open('http://213.21.251.36:8081', '_blank')">Купить</button>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="http://213.21.251.36" target="_blank" style="display: inline-block; padding: 15px 40px; background: #00ffff; color: #000; text-decoration: none; border-radius: 12px; font-weight: 900; text-transform: uppercase; box-shadow: 0 0 20px #00ffff;">🔗 Перейти в Панель управления</a>
+            </div>
+        </div>
+
         <!-- Плагины -->
         <div id="plugins" class="tab">
             <h2 style="text-align: center; margin-bottom: 30px; color: #00ffff; text-shadow: 0 0 15px #00ffff;">Наши разработки</h2>
@@ -228,48 +279,6 @@
             </div>
         </div>
 
-        <!-- Хостинг -->
-        <div id="hosting" class="tab">
-            <h2 style="text-align: center; margin-bottom: 10px; color: #ff00ff; font-size: 42px; text-shadow: 0 0 20px #ff00ff;">WitherMine Hosting</h2>
-            <p style="text-align: center; color: #888; margin-bottom: 40px;">Мощные сервера для твоих проектов. Без лагов и ограничений.</p>
-            
-            <div class="hosting-grid">
-                <div class="hosting-card">
-                    <h3>Java Старт</h3>
-                    <div class="price">75 <span>₽/мес</span></div>
-                    <ul>
-                        <li>1 ГБ RAM</li>
-                        <li>5 ГБ SSD</li>
-                        <li>1 Ядро CPU</li>
-                    </ul>
-                    <button class="btn-hosting" onclick="openTab('beta', document.querySelectorAll('nav button')[5])">Купить</button>
-                    <a href="http://213.21.251.36:8081" target="_blank" class="link-hosting">🔗 Открыть магазин</a>
-                </div>
-                <div class="hosting-card">
-                    <h3>Java Про</h3>
-                    <div class="price">200 <span>₽/мес</span></div>
-                    <ul>
-                        <li>2 ГБ RAM</li>
-                        <li>10 ГБ SSD</li>
-                        <li>2 Ядра CPU</li>
-                    </ul>
-                    <button class="btn-hosting" onclick="openTab('beta', document.querySelectorAll('nav button')[5])">Купить</button>
-                    <a href="http://213.21.251.36:8081" target="_blank" class="link-hosting">🔗 Открыть магазин</a>
-                </div>
-                <div class="hosting-card">
-                    <h3>Java Макс</h3>
-                    <div class="price">275 <span>₽/мес</span></div>
-                    <ul>
-                        <li>4 ГБ RAM</li>
-                        <li>20 ГБ SSD</li>
-                        <li>2 Ядра CPU</li>
-                    </ul>
-                    <button class="btn-hosting" onclick="openTab('beta', document.querySelectorAll('nav button')[5])">Купить</button>
-                    <a href="http://213.21.251.36:8081" target="_blank" class="link-hosting">🔗 Открыть магазин</a>
-                </div>
-            </div>
-        </div>
-
         <!-- Лаунчер -->
         <div id="launcher" class="tab">
             <div class="launcher-box">
@@ -284,54 +293,40 @@
             <h2 style="text-align: center; margin-bottom: 30px; color: #00ffff; font-size: 36px; text-shadow: 0 0 15px #00ffff;">Документы</h2>
             <div class="docs-grid">
                 
-                <!-- ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ -->
                 <div class="doc-card">
                     <h3>Пользовательское соглашение</h3>
-                    <p><b>Публичная оферта о продаже цифровых товаров и оказании услуг. Редакция от 02 ноября 2026 года.</b></p>
-                    <p><b>1. Общие положения.</b> Настоящее Соглашение определяет правила использования Сервиса WitherMine Company и условия продажи цифровых товаров. Соглашение является публичной офертой в соответствии со ст. 437 ГК РФ. Оплата Заказа означает полное принятие условий.</p>
-                    <p><b>2. Термины.</b> Сервис — сайт WitherMine Company. Администрация — физическое лицо, управляющее Сервисом. Пользователь — лицо, использующее Сервис. Цифровой товар — доступ к игровым серверам и услугам.</p>
+                    <p><b>1. Общие положения.</b> Настоящее Соглашение определяет правила использования Сервиса WitherMine Company. Оплата Заказа означает полное принятие условий.</p>
+                    <p><b>2. Термины.</b> Сервис — сайт WitherMine Company. Администрация — физлицо, управляющее Сервисом. Цифровой товар — доступ к игровым серверам.</p>
                     <p><b>3. Предмет.</b> Администрация передает Цифровые товары, а Покупатель оплачивает их в соответствии с Описанием.</p>
-                    <p><b>4. Правила.</b> Покупать товары могут лица, достигшие 18 лет (или с согласия родителей). Запрещено нарушать закон, использовать чужие средства, вмешиваться в работу Сервиса.</p>
-                    <p><b>5. Оплата.</b> Оплата принимается через Платежного провайдера (Cashera). Администрация не хранит данные банковских карт.</p>
-                    <p><b>6. Передача.</b> Цифровые товары передаются в электронном виде. Срок — сразу после оплаты, но не позднее 24 часов.</p>
-                    <p><b>7. Возврат.</b> До передачи товара возможен полный возврат. После передачи — только при технической неисправности по вине Администрации.</p>
+                    <p><b>4. Правила.</b> Запрещено нарушать закон, использовать чужие средства, вмешиваться в работу Сервиса.</p>
+                    <p><b>5. Оплата.</b> Оплата принимается через Платежного провайдера (Cashera).</p>
+                    <p><b>6. Передача.</b> Товары передаются в электронном виде сразу после оплаты.</p>
+                    <p><b>7. Возврат.</b> До передачи товара возможен полный возврат. После — только при неисправности.</p>
                     <p><b>8. Ответственность.</b> Администрация не гарантирует отсутствие сбоев, вызванных третьими лицами.</p>
                     <p><b>9. Контакты.</b> Поддержка: Witherminee@gmail.com, Telegram: @WitherMine_Official.</p>
                 </div>
 
-                <!-- ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ -->
                 <div class="doc-card">
                     <h3>Политика конфиденциальности</h3>
-                    <p><b>Политика обработки персональных данных. Редакция от 02 ноября 2026 года.</b></p>
-                    <p><b>1. Общие положения.</b> Политика определяет, какие данные обрабатывает Администрация WitherMine Company в соответствии с ФЗ-152 «О персональных данных».</p>
-                    <p><b>2. Какие данные.</b> Имя, email, данные о заказах и платежах, технические данные (IP, cookie). Администрация не хранит полные номера карт.</p>
+                    <p><b>1. Общие положения.</b> Политика определяет, какие данные обрабатывает Администрация в соответствии с ФЗ-152.</p>
+                    <p><b>2. Какие данные.</b> Имя, email, данные о заказах и платежах. Администрация не хранит полные номера карт.</p>
                     <p><b>3. Цели.</b> Регистрация, исполнение заказов, поддержка, безопасность.</p>
-                    <p><b>4. Передача.</b> Данные передаются только Платежному провайдеру (Cashera) и госорганам по законным запросам. Данные не продаются.</p>
-                    <p><b>5. Сроки.</b> Данные заказов хранятся до 5 лет, переписка — до 3 лет.</p>
+                    <p><b>4. Передача.</b> Данные передаются Платежному провайдеру (Cashera) и госорганам по запросу.</p>
+                    <p><b>5. Сроки.</b> Данные заказов хранятся до 5 лет.</p>
                     <p><b>6. Права.</b> Пользователь может запросить удаление данных через поддержку.</p>
                     <p><b>7. Контакты.</b> Witherminee@gmail.com, Telegram: @WitherMine_Official.</p>
                 </div>
 
-                <!-- ТЕХНИЧЕСКАЯ ПОДДЕРЖКА -->
                 <div class="doc-card">
                     <h3>Техническая поддержка</h3>
                     <p><b>1. Общие положения.</b> Раздел регулирует порядок обращения в службу поддержки WitherMine Company.</p>
                     <p><b>2. Способы связи.</b> Telegram: @WitherMine_Official (основной), Email: Witherminee@gmail.com.</p>
                     <p><b>3. Режим работы.</b> С 10:00 до 22:00 (МСК).</p>
                     <p><b>4. Сроки.</b> Стандартный ответ — до 24 часов. Претензии — до 10 дней.</p>
-                    <p><b>5. Требования.</b> Указывайте логин, суть проблемы, чек об оплате (при необходимости).</p>
-                    <p><b>6. Правила.</b> Общение должно быть вежливым. Спам и оскорбления не рассматриваются.</p>
+                    <p><b>5. Требования.</b> Указывайте логин, суть проблемы, чек об оплате.</p>
+                    <p><b>6. Правила.</b> Общение должно быть вежливым. Спам не рассматривается.</p>
                 </div>
 
-            </div>
-        </div>
-
-        <!-- Бета-оплата -->
-        <div id="beta" class="tab">
-            <div class="beta-box">
-                <h2>🚧 Оплата в Бета-тесте 🚧</h2>
-                <p>Мы работаем над автоматической системой оплаты и выдачи серверов. Скоро здесь появится магазин с СБП и картами!</p>
-                <p style="margin-top: 20px; color: #00ffff;">А пока — пишите нам в <a href="https://t.me/WitherMine_Official" target="_blank" style="color:#ff00ff; text-decoration: none; font-weight: bold;">Telegram</a> для ручной оплаты.</p>
             </div>
         </div>
     </div>
@@ -339,7 +334,7 @@
     <footer>
         <div class="footer-links">
             <a href="#" onclick="openTab('docs', document.querySelectorAll('nav button')[5])">Документы</a> | 
-            <a href="#" onclick="openTab('beta', document.querySelectorAll('nav button')[5])">Оплата</a> | 
+            <a href="#" onclick="openTab('hosting', document.querySelectorAll('nav button')[3])">Хостинг</a> | 
             <a href="https://t.me/WitherMine_Official" target="_blank">Техподдержка</a>
         </div>
         <br>
@@ -368,4 +363,4 @@
         }
     </script>
 </body>
-</html>
+    </html>
