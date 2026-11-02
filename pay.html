@@ -5,177 +5,139 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WitherMine | Официальный сайт</title>
     <style>
-        /* --- БАЗА --- */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap');
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         
         body {
-            background: linear-gradient(135deg, #0f0914 0%, #2a0e38 50%, #0f0914 100%);
+            background: #05010a;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
             background-attachment: fixed;
             color: #fff; min-height: 100vh; display: flex; flex-direction: column;
             overflow-x: hidden;
         }
 
-        /* Летящие осенние листья */
         .leaf {
-            position: fixed; top: -50px; font-size: 28px;
-            animation: fall linear infinite; z-index: 0; opacity: 0.7; pointer-events: none;
-            filter: drop-shadow(0 0 5px rgba(168, 85, 247, 0.3));
+            position: fixed; top: -50px; font-size: 28px; animation: fall linear infinite;
+            z-index: 0; opacity: 0.5; pointer-events: none;
+            filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.5));
         }
         @keyframes fall { to { transform: translateY(105vh) rotate(360deg); } }
         
-        /* --- ШАПКА --- */
         header {
-            background: rgba(15, 9, 20, 0.7); padding: 15px 30px; display: flex; justify-content: space-between;
-            align-items: center; border-bottom: 1px solid rgba(168, 85, 247, 0.2); position: sticky; top: 0; z-index: 100;
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            background: rgba(5, 1, 10, 0.8); padding: 15px 30px; display: flex; justify-content: space-between;
+            align-items: center; border-bottom: 1px solid rgba(0, 255, 255, 0.3); position: sticky; top: 0; z-index: 100;
+            backdrop-filter: blur(15px); box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
         }
         header h1 { 
-            color: #fff; font-size: 28px; font-weight: 900; letter-spacing: 1px;
-            background: linear-gradient(90deg, #a855f7, #e879f9);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+            color: #fff; font-size: 28px; font-weight: 900; letter-spacing: 2px;
+            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
         }
-        nav { display: flex; gap: 25px; }
+        nav { display: flex; gap: 20px; flex-wrap: wrap; }
         nav button {
-            background: none; border: none; color: #9ca3af; font-size: 15px; cursor: pointer;
-            transition: all 0.3s ease; font-weight: 600; padding-bottom: 5px; border-bottom: 2px solid transparent;
+            background: none; border: none; color: #888; font-size: 14px; cursor: pointer;
+            transition: all 0.3s ease; font-weight: 700; padding-bottom: 5px; border-bottom: 2px solid transparent;
+            text-transform: uppercase; letter-spacing: 1px;
         }
-        nav button:hover { color: #e879f9; }
-        nav button.active { color: #e879f9; border-bottom: 2px solid #e879f9; text-shadow: 0 0 10px rgba(232, 121, 249, 0.5); }
+        nav button:hover { color: #00ffff; text-shadow: 0 0 8px #00ffff; }
+        nav button.active { color: #ff00ff; border-bottom: 2px solid #ff00ff; text-shadow: 0 0 10px #ff00ff; }
 
-        /* --- КОНТЕНТ --- */
         .content { flex: 1; padding: 50px 20px; display: flex; justify-content: center; position: relative; z-index: 10; }
         .tab { display: none; width: 100%; max-width: 1100px; animation: slideUp 0.5s ease-out; }
         .tab.active { display: block; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- ГЛАВНАЯ --- */
+        /* ГЛАВНАЯ */
         .hero { text-align: center; margin-bottom: 50px; }
-        .hero h2 { font-size: 56px; margin-bottom: 15px; color: #fff; font-weight: 900; text-shadow: 0 0 30px rgba(168, 85, 247, 0.5); }
-        .hero p { font-size: 20px; color: #9ca3af; font-weight: 400; }
+        .hero h2 { font-size: 64px; margin-bottom: 15px; color: #fff; font-weight: 900; text-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff; }
+        .hero p { font-size: 20px; color: #00ffff; font-weight: 400; text-shadow: 0 0 10px #00ffff; }
         
         .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
         
-        /* --- КАРТОЧКИ (Glassmorphism) --- */
         .action-card {
-            background: rgba(255, 255, 255, 0.03); 
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            background: rgba(10, 5, 20, 0.7); backdrop-filter: blur(10px);
             padding: 40px 30px; border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.05); text-align: center; transition: 0.4s ease;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(168, 85, 247, 0.05);
-            position: relative; overflow: hidden;
+            border: 1px solid rgba(0, 255, 255, 0.2); text-align: center; transition: 0.4s ease;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
         }
-        .action-card:hover {
-            transform: translateY(-8px); border-color: rgba(168, 85, 247, 0.5); 
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(168, 85, 247, 0.15);
-        }
-        .action-card::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(168,85,247,0.1) 0%, transparent 60%);
-            opacity: 0; transition: 0.4s; pointer-events: none;
-        }
-        .action-card:hover::before { opacity: 1; }
+        .action-card:hover { transform: translateY(-10px); border-color: #ff00ff; box-shadow: 0 0 30px rgba(255, 0, 255, 0.4); }
+        .action-card h3 { font-size: 28px; color: #ff00ff; margin-bottom: 10px; font-weight: 800; text-shadow: 0 0 10px #ff00ff; }
+        .action-card p { color: #ccc; margin-bottom: 25px; font-size: 15px; line-height: 1.5; }
+        .features { margin: 0 auto 25px; text-align: left; display: inline-block; font-size: 14px; color: #aaa; line-height: 2; }
+        .features span { color: #00ffff; margin-right: 8px; font-weight: bold; text-shadow: 0 0 5px #00ffff; }
 
-        .action-card h3 { font-size: 28px; color: #e879f9; margin-bottom: 10px; font-weight: 800; }
-        .action-card p { color: #9ca3af; margin-bottom: 25px; font-size: 15px; line-height: 1.5; }
-        
-        .features { margin: 0 auto 25px; text-align: left; display: inline-block; font-size: 14px; color: #d1d5db; line-height: 2; }
-        .features span { color: #a855f7; margin-right: 8px; font-weight: bold; }
-
-        /* --- КНОПКИ --- */
+        /* КНОПКИ */
         .btn-main { 
             display: inline-flex; justify-content: center; align-items: center;
-            width: 100%; max-width: 320px; height: 60px; color: #fff; border-radius: 14px; 
-            font-weight: 800; font-size: 16px; transition: 0.3s ease; cursor: pointer; border: none; 
-            letter-spacing: 0.5px; position: relative; overflow: hidden; z-index: 1;
+            width: 100%; max-width: 320px; height: 60px; color: #000; border-radius: 14px; 
+            font-weight: 900; font-size: 16px; cursor: pointer; border: none; transition: 0.3s;
+            text-transform: uppercase;
         }
-        .btn-red { background: linear-gradient(135deg, #991b1b, #dc2626); box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3); }
-        .btn-red:hover { box-shadow: 0 15px 25px rgba(220, 38, 38, 0.5); transform: translateY(-2px); }
-        .btn-green { background: linear-gradient(135deg, #166534, #22c55e); box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3); }
-        .btn-green:hover { box-shadow: 0 15px 25px rgba(34, 197, 94, 0.5); transform: translateY(-2px); }
-        .btn-purple { background: linear-gradient(135deg, #6b21a8, #a855f7); box-shadow: 0 10px 20px rgba(168, 85, 247, 0.3); }
-        .btn-purple:hover { box-shadow: 0 15px 25px rgba(168, 85, 247, 0.5); transform: translateY(-2px); }
+        .btn-red { background: #ff00ff; box-shadow: 0 0 15px #ff00ff; }
+        .btn-red:hover { box-shadow: 0 0 30px #ff00ff; }
+        .btn-green { background: #00ffff; box-shadow: 0 0 15px #00ffff; }
+        .btn-green:hover { box-shadow: 0 0 30px #00ffff; }
+        .btn-purple { background: #8a2be2; box-shadow: 0 0 15px #8a2be2; color: #fff; }
+        .btn-purple:hover { box-shadow: 0 0 30px #8a2be2; }
 
-        /* --- ВКЛАДКА ЛАУНЧЕР --- */
-        .launcher-box { 
-            text-align: center; background: rgba(255, 255, 255, 0.03); padding: 60px; border-radius: 30px; 
-            border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 20px 50px rgba(0,0,0,0.5); backdrop-filter: blur(10px);
+        /* ХОСТИНГ */
+        .hosting-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 20px; }
+        .hosting-card {
+            background: rgba(10, 5, 20, 0.8); padding: 30px; border-radius: 20px;
+            border: 1px solid rgba(0, 255, 255, 0.3); text-align: center; transition: 0.3s;
         }
-        .launcher-box h2 { color: #e879f9; margin-bottom: 20px; font-size: 40px; font-weight: 900; }
-        .launcher-box p { color: #9ca3af; margin-bottom: 40px; font-size: 18px; }
-        .download-btn { 
-            display: inline-block; padding: 20px 70px; background: linear-gradient(135deg, #16a34a, #4ade80); 
-            color: #000; text-decoration: none; border-radius: 16px; font-weight: 900; font-size: 22px; 
-            transition: 0.3s; box-shadow: 0 10px 30px rgba(74, 222, 128, 0.3); 
-        }
-        .download-btn:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 40px rgba(74, 222, 128, 0.5); }
+        .hosting-card:hover { transform: translateY(-5px); border-color: #ff00ff; box-shadow: 0 0 25px rgba(255, 0, 255, 0.3); }
+        .hosting-card h3 { color: #fff; font-size: 24px; margin-bottom: 10px; }
+        .hosting-card .price { font-size: 36px; font-weight: 900; color: #00ffff; margin: 15px 0; text-shadow: 0 0 10px #00ffff; }
+        .hosting-card .price span { font-size: 16px; color: #888; }
+        .hosting-card ul { list-style: none; text-align: left; margin-bottom: 25px; color: #ccc; font-size: 14px; line-height: 2; }
+        .hosting-card ul li::before { content: '⚡'; color: #ff00ff; margin-right: 8px; }
+        .btn-hosting { display: block; width: 100%; padding: 15px; background: transparent; border: 2px solid #00ffff; color: #00ffff; font-weight: bold; border-radius: 10px; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
+        .btn-hosting:hover { background: #00ffff; color: #000; box-shadow: 0 0 20px #00ffff; }
 
-        /* --- КАРТА --- */
-        .map-container { background: #000; border-radius: 24px; overflow: hidden; border: 1px solid rgba(168, 85, 247, 0.3); height: 600px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
+        /* ЛАУНЧЕР */
+        .launcher-box { text-align: center; background: rgba(10, 5, 20, 0.8); padding: 60px; border-radius: 30px; border: 1px solid rgba(255, 0, 255, 0.3); box-shadow: 0 0 30px rgba(255, 0, 255, 0.2); }
+        .launcher-box h2 { color: #00ffff; margin-bottom: 20px; font-size: 40px; font-weight: 900; text-shadow: 0 0 15px #00ffff; }
+        .launcher-box p { color: #ccc; margin-bottom: 40px; font-size: 18px; }
+        .download-btn { display: inline-block; padding: 20px 70px; background: #ff00ff; color: #000; text-decoration: none; border-radius: 16px; font-weight: 900; font-size: 22px; box-shadow: 0 0 20px #ff00ff; transition: 0.3s; }
+        .download-btn:hover { transform: translateY(-5px); box-shadow: 0 0 40px #ff00ff; }
+
+        /* КАРТА */
+        .map-container { background: #000; border-radius: 24px; overflow: hidden; border: 2px solid #00ffff; height: 600px; box-shadow: 0 0 25px rgba(0, 255, 255, 0.3); }
         .map-container iframe { width: 100%; height: 100%; border: none; }
 
-        /* --- ПЛАГИНЫ --- */
+        /* ПЛАГИНЫ */
         .plugins-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .plugin-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(168, 85, 247, 0.2); border-radius: 20px; padding: 30px; transition: 0.3s; }
-        .plugin-card:hover { transform: translateY(-5px); border-color: #a855f7; box-shadow: 0 15px 30px rgba(168, 85, 247, 0.15); }
-        .plugin-card h3 { color: #e879f9; font-size: 22px; margin-bottom: 15px; font-weight: 800; }
-        .plugin-card p { color: #9ca3af; font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
-        .plugin-card .btn { display: inline-block; background: #8a2be2; color: #fff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-        .plugin-card .btn:hover { background: #a855f7; box-shadow: 0 0 15px rgba(168, 85, 247, 0.5); }
+        .plugin-card { background: rgba(10, 5, 20, 0.8); border: 1px solid rgba(0, 255, 255, 0.3); border-radius: 20px; padding: 30px; transition: 0.3s; }
+        .plugin-card:hover { box-shadow: 0 0 20px rgba(0, 255, 255, 0.2); }
+        .plugin-card h3 { color: #ff00ff; font-size: 22px; margin-bottom: 15px; font-weight: 800; text-shadow: 0 0 10px #ff00ff; }
+        .plugin-card p { color: #ccc; font-size: 14px; margin-bottom: 20px; }
+        .plugin-card .btn { display: inline-block; background: #00ffff; color: #000; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; box-shadow: 0 0 10px #00ffff; }
 
-        /* --- ОПЛАТА --- */
-        .pay-box { 
-            background: rgba(255, 255, 255, 0.03); padding: 40px; border-radius: 24px; 
-            border: 1px solid rgba(168, 85, 247, 0.2); text-align: center; max-width: 520px; margin: 0 auto; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6); backdrop-filter: blur(10px);
-        }
-        .pay-box h2 { color: #e879f9; margin-bottom: 20px; font-size: 32px; font-weight: 800; }
-        .product-select { 
-            width: 100%; padding: 16px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); 
-            color: #fff; border-radius: 12px; font-size: 16px; margin-bottom: 25px; outline: none; cursor: pointer; transition: 0.3s;
-        }
-        .product-select:focus { border-color: #a855f7; box-shadow: 0 0 15px rgba(168, 85, 247, 0.2); }
-        .price-display { font-size: 48px; font-weight: 900; margin: 20px 0; color: #fff; text-shadow: 0 0 20px rgba(255,255,255,0.1); }
-        .price-display span { font-size: 24px; color: #a855f7; }
-        .qr-image-container { 
-            width: 220px; height: 220px; margin: 0 auto 25px; border-radius: 16px; background: #fff; padding: 10px; 
-            display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        }
-        .phone-box { 
-            background: rgba(0,0,0,0.3); padding: 15px 20px; border-radius: 12px; margin-bottom: 25px; 
-            display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.1); 
-        }
-        .phone-box span { font-size: 20px; font-weight: 800; letter-spacing: 1px; }
-        .copy-btn { background: #a855f7; color: #fff; border: none; padding: 10px 18px; border-radius: 8px; cursor: pointer; font-weight: 700; transition: 0.3s; font-size: 14px; }
-        .copy-btn:hover { background: #c084fc; box-shadow: 0 0 15px rgba(168, 85, 247, 0.4); }
-        .instruction { text-align: left; font-size: 14px; color: #9ca3af; margin-bottom: 30px; line-height: 1.8; }
-        .instruction ol { padding-left: 20px; }
-        .instruction b { color: #e879f9; }
-        .btn-discord { 
-            display: block; width: 100%; padding: 18px; background: linear-gradient(135deg, #4752C4, #5865F2); 
-            color: #fff; border-radius: 12px; text-decoration: none; font-weight: 800; font-size: 16px; 
-            transition: 0.3s; text-align: center; box-shadow: 0 10px 20px rgba(88, 101, 242, 0.3);
-        }
-        .btn-discord:hover { background: linear-gradient(135deg, #5865F2, #7c85f5); transform: translateY(-2px); box-shadow: 0 15px 30px rgba(88, 101, 242, 0.5); }
+        /* ДОКУМЕНТЫ */
+        .docs-grid { display: flex; flex-direction: column; gap: 20px; align-items: center; }
+        .doc-card { background: rgba(10, 5, 20, 0.9); padding: 30px; border-radius: 20px; border: 1px solid rgba(0, 255, 255, 0.2); width: 100%; max-width: 800px; transition: 0.3s; }
+        .doc-card:hover { border-color: #ff00ff; box-shadow: 0 0 20px rgba(255, 0, 255, 0.2); }
+        .doc-card h3 { color: #ff00ff; margin-bottom: 15px; font-size: 22px; text-shadow: 0 0 10px #ff00ff; }
+        .doc-card p { color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 10px; }
+        .doc-card a { color: #00ffff; text-decoration: none; font-weight: bold; }
 
-        /* --- ФУТЕР --- */
-        footer { text-align: center; padding: 25px; color: #6b7280; font-size: 14px; border-top: 1px solid rgba(255, 255, 255, 0.05); margin-top: auto; background: rgba(15, 9, 20, 0.9); position: relative; z-index: 10; }
+        /* ПОДВАЛ */
+        footer { text-align: center; padding: 30px; color: #555; font-size: 14px; border-top: 1px solid rgba(0, 255, 255, 0.1); background: rgba(5, 1, 10, 0.9); position: relative; z-index: 10; }
+        .footer-links a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; font-size: 13px; }
+        .footer-links a:hover { color: #00ffff; text-shadow: 0 0 10px #00ffff; }
 
         @media (max-width: 768px) {
-            .action-grid { grid-template-columns: 1fr; }
+            .action-grid, .hosting-grid { grid-template-columns: 1fr; }
             header { flex-direction: column; gap: 15px; }
-            nav { flex-wrap: wrap; justify-content: center; gap: 15px;}
-            .hero h2 { font-size: 38px; }
-            .launcher-box { padding: 30px; }
-            .launcher-box h2 { font-size: 28px; }
-            .download-btn { padding: 15px 30px; font-size: 18px;}
+            nav { flex-wrap: wrap; justify-content: center; }
+            .hero h2 { font-size: 40px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Осенние листья -->
     <script>
         const leaves = ['🍁', '🍂', '🍃'];
         for (let i = 0; i < 25; i++) {
@@ -189,30 +151,25 @@
         }
     </script>
 
-    <!-- Шапка -->
     <header>
         <h1>WitherMine</h1>
         <nav>
             <button class="active" onclick="openTab('home', this)">Главное меню</button>
-            <button onclick="openTab('launcher', this)">Лаунчер</button>
-            <button onclick="openTab('map', this)">Карта мира</button>
             <button onclick="openTab('plugins', this)">Плагины</button>
-            <button onclick="openTab('pay', this)">Оплата</button>
+            <button onclick="openTab('map', this)">Карта мира</button>
+            <button onclick="openTab('hosting', this)">Хостинг</button>
+            <button onclick="openTab('docs', this)">Документы</button>
         </nav>
     </header>
 
-    <!-- Контент -->
     <div class="content">
-        
-        <!-- Вкладка 1: Главное меню -->
+        <!-- Главное меню -->
         <div id="home" class="tab active">
             <div class="hero">
                 <h2>WitherMine</h2>
                 <p>Твой путь в мире политики и выживания начинается здесь</p>
             </div>
-            
             <div class="action-grid">
-                <!-- Политика -->
                 <div class="action-card">
                     <h3>Политика</h3>
                     <p>Интриги, войны и осенний кризис. Выживи в мире 19-го века.</p>
@@ -220,13 +177,9 @@
                         <span>✔</span> Паровозы и лодки<br>
                         <span>✔</span> Мировые кризисы<br>
                         <span>✔</span> Смена эпох (19-21 век)
-                    </div>
-                    <br>
+                    </div><br>
                     <button onclick="copyToClipboard('95.216.30.30:25680', this)" class="btn-main btn-red" data-original="IP: 95.216.30.30:25680">IP: 95.216.30.30:25680</button>
-                    <p style="font-size: 12px; color: #6b7280; margin-top: 15px;">Нажми, чтобы скопировать IP</p>
                 </div>
-
-                <!-- СМП Bedrock -->
                 <div class="action-card">
                     <h3>СМП (Bedrock)</h3>
                     <p>Играй с телефона или ПК. Классическое выживание с друзьями.</p>
@@ -234,104 +187,121 @@
                         <span>✔</span> Кроссплатформенность<br>
                         <span>✔</span> Стабильный онлайн<br>
                         <span>✔</span> Дружелюбное комьюнити
-                    </div>
-                    <br>
+                    </div><br>
                     <button onclick="copyToClipboard('n42.joinserver.xyz:19176', this)" class="btn-main btn-green" data-original="IP: n42.joinserver.xyz:19176">IP: n42.joinserver.xyz:19176</button>
-                    <p style="font-size: 12px; color: #6b7280; margin-top: 15px;">Нажми, чтобы скопировать IP</p>
                 </div>
             </div>
         </div>
 
-        <!-- Вкладка 2: Лаунчер -->
-        <div id="launcher" class="tab">
-            <div class="launcher-box">
-                <h2>WitherMine Launcher</h2>
-                <p>Наш фирменный клиент с поддержкой Forge и Fabric, кастомизацией и мгновенным запуском.</p>
-                <a href="https://disk.yandex.ru/d/czUsOb2UsV2iXw" class="download-btn" target="_blank">⬇ Скачать лаунчер</a>
-                <p style="margin-top: 25px; font-size: 14px; color: #6b7280;">Версия: 2.0 | Размер: ~15 МБ</p>
-            </div>
-        </div>
-
-        <!-- Вкладка 3: Карта -->
-        <div id="map" class="tab">
-            <h2 style="text-align: center; margin-bottom: 25px; color: #e879f9; font-size: 36px; font-weight: 900; text-shadow: 0 0 20px rgba(232, 121, 249, 0.4);">Карта мира</h2>
-            <div class="map-container">
-                <iframe src="http://95.216.30.30:25680" title="Карта мира WitherMine"></iframe>
-            </div>
-            <p style="text-align: center; margin-top: 20px; color: #9ca3af; font-size: 14px;">Если карта не загружается, откройте её <a href="http://95.216.30.30:25680" target="_blank" style="color: #a855f7; text-decoration: none; font-weight: bold;">в новой вкладке</a>.</p>
-        </div>
-
-        <!-- Вкладка 4: Плагины -->
+        <!-- Плагины -->
         <div id="plugins" class="tab">
-            <h2 style="text-align: center; margin-bottom: 30px; color: #e879f9;">Наши разработки</h2>
-            
-            <h3 style="color: #fff; margin-bottom: 20px; font-weight: 800;">Java Плагины</h3>
+            <h2 style="text-align: center; margin-bottom: 30px; color: #00ffff; text-shadow: 0 0 15px #00ffff;">Наши разработки</h2>
             <div class="plugins-grid">
                 <div class="plugin-card">
                     <h3>WitherPar</h3>
-                    <p>Добавляет механику промышленной революции. Паровые котлы (ускоряют плавку) и Паровозы (быстрее едут на угле).</p>
+                    <p>Добавляет механику промышленной революции. Паровые котлы и Паровозы.</p>
                     <a href="https://disk.yandex.ru/d/Y6AuAlXLD5zNsw" class="btn" target="_blank">Скачать .jar</a>
                 </div>
-                <div class="plugin-card">
-                    <h3>Скоро...</h3>
-                    <p>Здесь появятся другие наши разработки для Java-серверов.</p>
-                </div>
             </div>
+        </div>
 
-            <h3 style="color: #fff; margin-top: 40px; margin-bottom: 20px; font-weight: 800;">Bedrock Аддоны</h3>
-            <div class="plugins-grid">
-                <div class="plugin-card">
-                    <h3>Скоро...</h3>
-                    <p>Адаптация наших плагинов для игроков с телефонов (Bedrock).</p>
+        <!-- Карта -->
+        <div id="map" class="tab">
+            <h2 style="text-align: center; margin-bottom: 25px; color: #ff00ff; font-size: 36px; text-shadow: 0 0 15px #ff00ff;">Карта мира</h2>
+            <div class="map-container">
+                <iframe src="http://95.216.30.30:25680" title="Карта мира"></iframe>
+            </div>
+        </div>
+
+        <!-- Хостинг -->
+        <div id="hosting" class="tab">
+            <h2 style="text-align: center; margin-bottom: 10px; color: #ff00ff; font-size: 42px; text-shadow: 0 0 20px #ff00ff;">WitherMine Hosting</h2>
+            <p style="text-align: center; color: #888; margin-bottom: 40px;">Мощные сервера для твоих проектов. Без лагов и ограничений.</p>
+            
+            <div class="hosting-grid">
+                <div class="hosting-card">
+                    <h3>Java Старт</h3>
+                    <div class="price">75 <span>₽/мес</span></div>
+                    <ul>
+                        <li>1 ГБ RAM</li>
+                        <li>5 ГБ SSD</li>
+                        <li>1 Ядро CPU</li>
+                    </ul>
+                    <button class="btn-hosting" onclick="openTab('beta', document.querySelectorAll('nav button')[5])">Купить</button>
+                </div>
+                <div class="hosting-card">
+                    <h3>Java Про</h3>
+                    <div class="price">200 <span>₽/мес</span></div>
+                    <ul>
+                        <li>2 ГБ RAM</li>
+                        <li>10 ГБ SSD</li>
+                        <li>2 Ядра CPU</li>
+                    </ul>
+                    <button class="btn-hosting" onclick="openTab('beta', document.querySelectorAll('nav button')[5])">Купить</button>
+                </div>
+                <div class="hosting-card">
+                    <h3>Java Макс</h3>
+                    <div class="price">275 <span>₽/мес</span></div>
+                    <ul>
+                        <li>4 ГБ RAM</li>
+                        <li>20 ГБ SSD</li>
+                        <li>2 Ядра CPU</li>
+                    </ul>
+                    <button class="btn-hosting" onclick="openTab('beta', document.querySelectorAll('nav button')[5])">Купить</button>
                 </div>
             </div>
         </div>
 
-        <!-- Вкладка 5: Оплата -->
-        <div id="pay" class="tab">
-            <div class="pay-box">
-                <h2>Оплата через СБП</h2>
-                <p style="color: #9ca3af; margin-bottom: 25px; font-size: 15px;">Выберите товар и переведите сумму</p>
-
-                <select class="product-select" id="product" onchange="updatePrice()">
-                    <option value="25">WitherCone (250 шт.) - 25 ₽</option>
-                    <option value="75">WitherCone (500 шт.) - 75 ₽</option>
-                    <option value="125">Сундук WitherCone - 125 ₽</option>
-                    <option value="199">VIP на месяц - 199 ₽</option>
-                    <option value="499">PREMIUM на месяц - 499 ₽</option>
-                </select>
-
-                <div class="price-display" id="price">25 <span>₽</span></div>
-
-                <div class="qr-image-container">
-                    <div style="color: #000; text-align: center; font-weight: bold; font-size: 14px;">
-                        Сюда вставь<br>картинку QR<br>(qr.png)
-                    </div>
+        <!-- Документы -->
+        <div id="docs" class="tab">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #00ffff; font-size: 36px; text-shadow: 0 0 15px #00ffff;">Документы</h2>
+            <div class="docs-grid">
+                <div class="doc-card">
+                    <h3>Пользовательское соглашение</h3>
+                    <p><b>1. Общие положения.</b> Настоящее Соглашение регулирует отношения между Администрацией проекта WitherMine Company (далее — Исполнитель) и Пользователем (далее — Клиент).</p>
+                    <p><b>2. Предмет.</b> Исполнитель предоставляет доступ к серверам (Minecraft Java и Bedrock) и лаунчеру, а Клиент оплачивает услуги.</p>
+                    <p><b>3. Обязанности.</b> Клиент обязуется не использовать серверы для DDoS, спама и запрещенного контента.</p>
+                    <p><b>4. Оплата.</b> Оплата авансом за месяц. Возврат — только при технической неисправности по вине Исполнителя.</p>
+                    <p><b>5. Ответственность.</b> Исполнитель не несет ответственности за сбои по вине третьих лиц.</p>
+                    <p style="margin-top: 15px; color: #ff00ff;">Контакт: Witherminee@gmail.com</p>
                 </div>
-
-                <div class="phone-box">
-                    <span id="phone-number">+7 (992) 525-67-61</span>
-                    <button class="copy-btn" onclick="copyPhone()">Копировать</button>
+                <div class="doc-card">
+                    <h3>Политика конфиденциальности</h3>
+                    <p><b>1. Сбор данных.</b> Мы собираем минимальный объем: email, имя пользователя и платежные данные.</p>
+                    <p><b>2. Использование.</b> Данные нужны для идентификации и доступа к серверам.</p>
+                    <p><b>3. Передача.</b> Мы не передаем данные третьим лицам, кроме платежных систем.</p>
+                    <p><b>4. Защита.</b> Принимаем меры для защиты от несанкционированного доступа.</p>
+                    <p><b>5. Права.</b> Вы можете запросить удаление данных через поддержку.</p>
+                    <p style="margin-top: 15px; color: #ff00ff;">Контакт: Witherminee@gmail.com</p>
                 </div>
-
-                <div class="instruction">
-                    <ol>
-                        <li>Отсканируйте QR-код в приложении банка.</li>
-                        <li>Или выберите «Перевод по СБП».</li>
-                        <li>Введите номер: <b>+7 (992) 525-67-61</b>.</li>
-                        <li>Переведите точную сумму и сохраните чек.</li>
-                        <li>Нажмите кнопку ниже и пришлите чек в Discord.</li>
-                    </ol>
+                <div class="doc-card">
+                    <h3>Техническая поддержка</h3>
+                    <p>По всем вопросам работы серверов, лаунчера или оплаты обращайтесь:</p>
+                    <p>Telegram: <a href="https://t.me/WitherMine_Official" target="_blank">@WitherMine_Official</a></p>
+                    <p>Email: <a href="mailto:Witherminee@gmail.com">Witherminee@gmail.com</a></p>
+                    <p>Время ответа: с 10:00 до 22:00 (МСК).</p>
                 </div>
-
-                <a href="https://discord.gg/твой_инвайт" class="btn-discord" target="_blank">Я оплатил (написать в Discord)</a>
             </div>
         </div>
 
+        <!-- Бета-оплата -->
+        <div id="beta" class="tab">
+            <div class="beta-box">
+                <h2>🚧 Оплата в Бета-тесте 🚧</h2>
+                <p>Мы работаем над автоматической системой оплаты и выдачи серверов. Скоро здесь появится магазин с СБП и картами!</p>
+                <p style="margin-top: 20px; color: #00ffff;">А пока — пишите нам в <a href="https://t.me/WitherMine_Official" target="_blank" style="color:#ff00ff; text-decoration: none; font-weight: bold;">Telegram</a> для ручной оплаты.</p>
+            </div>
+        </div>
     </div>
 
     <footer>
-        &copy; 2026 WitherMine. Все права защищены.
+        <div class="footer-links">
+            <a href="#" onclick="openTab('docs', document.querySelectorAll('nav button')[4])">Документы</a> | 
+            <a href="#" onclick="openTab('beta', document.querySelectorAll('nav button')[5])">Оплата</a> | 
+            <a href="https://t.me/WitherMine_Official" target="_blank">Техподдержка</a>
+        </div>
+        <br>
+        &copy; 2026 WitherMine Company. Все права защищены.
     </footer>
 
     <script>
@@ -339,30 +309,20 @@
             document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-            btn.classList.add('active');
+            if(btn) btn.classList.add('active');
         }
-
         function copyToClipboard(text, btn) {
             navigator.clipboard.writeText(text).then(() => {
                 const originalText = btn.getAttribute('data-original');
                 btn.innerText = "Скопировано!";
-                btn.style.background = "linear-gradient(135deg, #16a34a, #4ade80)";
+                btn.style.background = "#00ffff";
+                btn.style.color = "#000";
                 setTimeout(() => {
                     btn.innerText = originalText;
-                    if(btn.classList.contains('btn-red')) btn.style.background = "linear-gradient(135deg, #991b1b, #dc2626)";
-                    else btn.style.background = "linear-gradient(135deg, #166534, #22c55e)";
+                    btn.style.background = btn.classList.contains('btn-red') ? "#ff00ff" : "#00ffff";
+                    btn.style.color = "#000";
                 }, 1500);
             });
-        }
-
-        function updatePrice() {
-            const select = document.getElementById('product');
-            document.getElementById('price').innerHTML = `${select.value} <span>₽</span>`;
-        }
-
-        function copyPhone() {
-            const phone = document.getElementById('phone-number').innerText.replace(/\D/g, '');
-            navigator.clipboard.writeText(phone).then(() => alert('Номер скопирован: +' + phone));
         }
     </script>
 </body>
